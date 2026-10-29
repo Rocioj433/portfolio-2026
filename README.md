@@ -91,9 +91,8 @@ actualiza `<html lang>`, el título y las meta tags, y recuerda la elección en
 
 ## Temas
 
-La estética parte de la paleta de [piszczek.pl](https://piszczek.pl/): **verde terminal
-sobre casi negro**. El oscuro es el tema de referencia; el claro es una variante derivada
-en papel frío, con el mismo verde oscurecido hasta pasar AA.
+La estética parte de la paleta es: **verde terminal
+sobre casi negro**.
 
 - **Oscuro** (`#030303`, acento `#00ff94`): fondo casi negro, lavado radial verde arriba a
   la derecha, grilla técnica en el hero, tarjetas con glow al hover y un foco que sigue al
