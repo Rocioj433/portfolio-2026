@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Rocío Sánchez Suárez | Desarrolladora Full Stack</title>
+    <meta
+      name="description"
+      content="Portfolio de Rocío Sánchez Suárez, Desarrolladora Full Stack con 3 años de experiencia en React.js, Go, PHP/Symfony y Python (FastAPI). Experiencia, proyectos, formación y contacto."
+    />
+    <meta name="author" content="Rocío Sánchez Suárez" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="%SITE_URL%" />
+
+    <meta name="theme-color" content="#030303" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!--
+      Applies the stored/OS theme before the bundle loads, so the first paint is
+      never the wrong colour. Keep in sync with src/i18n/ThemeProvider.tsx.
+    -->
+    <script>
+      ;(function () {
+        try {
+          var stored = window.localStorage.getItem('portfolio:theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          var meta = document.querySelector('meta[name="theme-color"]')
+          if (meta) {
+            meta.setAttribute('content', theme === 'dark' ? '#030303' : '#f6f7f5')
+          }
+        } catch (error) {
+          /* No storage or no matchMedia: the light default from the CSS applies. */
+        }
+      })()
+    </script>
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rocío Sánchez Suárez" />
+    <meta property="og:url" content="%SITE_URL%" />
+    <meta property="og:title" content="Rocío Sánchez Suárez | Desarrolladora Full Stack" />
+    <meta
+      property="og:description"
+      content="Portfolio de Rocío Sánchez Suárez, Desarrolladora Full Stack con 3 años de experiencia en React.js, Go, PHP/Symfony y Python (FastAPI)."
+    />
+    <meta property="og:image" content="%SITE_URL%og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Rocío Sánchez Suárez | Desarrolladora Full Stack" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rocío Sánchez Suárez | Desarrolladora Full Stack" />
+    <meta
+      name="twitter:description"
+      content="Portfolio de Rocío Sánchez Suárez, Desarrolladora Full Stack con 3 años de experiencia en React.js, Go, PHP/Symfony y Python (FastAPI)."
+    />
+    <meta name="twitter:image" content="%SITE_URL%og-image.png" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <link rel="manifest" href="%BASE_URL%site.webmanifest" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rocío Sánchez Suárez",
+        "jobTitle": "Full Stack Developer",
+        "email": "mailto:rocioj433@gmail.com",
+        "url": "%SITE_URL%",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/rocio-sanchez-suarez",
+          "https://github.com/Rocioj433"
+        ],
+        "knowsAbout": [
+          "React.js",
+          "JavaScript",
+          "TypeScript",
+          "Go",
+          "PHP",
+          "Symfony",
+          "Python",
+          "FastAPI",
+          "SQL",
+          "MySQL",
+          "Docker",
+          "AWS"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div
+        style="
+          max-width: 42rem;
+          margin: 3rem auto;
+          padding: 0 1.25rem;
+          font-family: 'Space Grotesk', system-ui, sans-serif;
+          color: #e2e8f0;
+          background: #030303;
+        "
+      >
+        <h1 style="font-size: 1.75rem; margin-bottom: 0.5rem">Rocío Sánchez Suárez</h1>
+        <p style="color: #8f9ba8; margin-bottom: 1rem">
+          Desarrolladora Full Stack: React.js · Go · PHP/Symfony · Python (FastAPI) · SQL · Docker
+        </p>
+        <p style="margin-bottom: 1rem">
+          Este portfolio necesita JavaScript para mostrar las secciones interactivas. Mientras
+          tanto, podés contactarme directamente:
+        </p>
+        <ul style="line-height: 1.9">
+          <li>
+            <a style="color: #00ff94" href="mailto:rocioj433@gmail.com">rocioj433@gmail.com</a>
+          </li>
+          <li>
+            <a style="color: #00ff94" href="https://www.linkedin.com/in/rocio-sanchez-suarez"
+              >LinkedIn</a
+            >
+          </li>
+          <li><a style="color: #00ff94" href="https://github.com/Rocioj433">GitHub</a></li>
+          <li>
+            <a style="color: #00ff94" href="%BASE_URL%CV_RocioSanchez.pdf">Descargar CV (PDF)</a>
+          </li>
+        </ul>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

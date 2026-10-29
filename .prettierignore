@@ -1,0 +1,8 @@
+dist/
+coverage/
+node_modules/
+package-lock.json
+public/*.pdf
+public/*.png
+# Working output of the tasteskill inspector (screenshots + JSON reports)
+.taste-skill/

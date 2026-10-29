@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Rocío Sánchez Suárez">
+  <rect width="64" height="64" rx="9" fill="#030303" />
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="8.25" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.5" />
+  <text x="32" y="37" font-family="ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="23" font-weight="700" letter-spacing="-0.5" fill="#e2e8f0" text-anchor="middle">RS</text>
+  <rect x="24" y="43" width="16" height="4" rx="2" fill="#00ff94" />
+</svg>

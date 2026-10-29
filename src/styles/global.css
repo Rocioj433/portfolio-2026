@@ -1,0 +1,1402 @@
+/* ============================================================
+   Typography — self-hosted, variable, SIL OFL 1.1
+   Space Grotesk 300–700 (sans) · JetBrains Mono 100–800 (mono)
+   Files live in src/assets/fonts so Vite hashes them and applies
+   the deploy base path. No external font/CDN requests.
+   ============================================================ */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../assets/fonts/space-grotesk-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../assets/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+/* ============================================================
+   Design tokens — "terminal green on near-black"
+   Dark is the signature theme and the CSS default; the light
+   variant is a derived paper counterpart with the accent
+   darkened until it clears AA.
+   Contrast (WCAG AA, text pairs ≥ 4.5:1):
+     dark  → text/bg ≈ 15.8:1 · secondary/bg ≈ 7.6:1 · muted/bg ≈ 5.3:1
+     light → text/bg ≈ 18.1:1 · secondary/bg ≈ 7.6:1 · muted/bg ≈ 4.7:1
+   ============================================================ */
+:root {
+  --bg: #030303;
+  --surface: #0a0a0a;
+  --surface-2: #101010;
+  --surface-raised: rgba(10, 10, 10, 0.72);
+
+  --text: #e2e8f0;
+  --text-2: #d1d5db;
+  --secondary: #8f9ba8;
+  --muted: #7d8795;
+
+  --accent: #00ff94;
+  --accent-dim: rgba(0, 255, 148, 0.1);
+  --accent-line: rgba(0, 255, 148, 0.4);
+  --accent-glow: rgba(0, 255, 148, 0.35);
+  --on-accent: #030303;
+
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --grid-line: rgba(0, 255, 148, 0.07);
+  --header-bg: rgba(3, 3, 3, 0.82);
+
+  --primary-bg: #ffffff;
+  --primary-fg: #000000;
+
+  --shadow-pop: 0 18px 40px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(0, 255, 148, 0.1);
+
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
+
+  --r-sm: 6px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  --w-shell: 1200px;
+  --nav-h: 64px;
+
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --surface-2: #eef0ed;
+  --surface-raised: rgba(255, 255, 255, 0.78);
+
+  --text: #0b0f0d;
+  --text-2: #1f2623;
+  --secondary: #4b5450;
+  --muted: #67706b;
+
+  --accent: #047857;
+  --accent-dim: rgba(4, 120, 87, 0.07);
+  --accent-line: rgba(4, 120, 87, 0.4);
+  --accent-glow: rgba(4, 120, 87, 0.22);
+  --on-accent: #ffffff;
+
+  --border: rgba(11, 15, 13, 0.1);
+  --border-strong: rgba(11, 15, 13, 0.18);
+  --grid-line: rgba(4, 120, 87, 0.09);
+  --header-bg: rgba(246, 247, 245, 0.85);
+
+  --primary-bg: #0b0f0d;
+  --primary-fg: #ffffff;
+
+  --shadow-pop: 0 18px 40px rgba(11, 15, 13, 0.12);
+  --shadow-card: 0 18px 36px -14px rgba(11, 15, 13, 0.22), 0 0 18px -8px rgba(4, 120, 87, 0.18);
+
+  color-scheme: light;
+}
+
+/* ============================================================
+   Reset / base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--bg);
+  /* Both gutters are reserved, so the two outer margins stay equal whether or
+     not the scrollbar is showing. */
+  scrollbar-gutter: stable both-edges;
+}
+
+/* Hero accent wash: a decorative layer behind the copy (not a pseudo
+   element on an ancestor) so contrast checkers can still resolve text. */
+.hero__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(55% 48% at 82% -6%, var(--accent-dim), transparent 66%);
+  pointer-events: none;
+}
+
+body {
+  min-height: 100svh;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Motion: opt-in smooth scroll, hard-off under reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Motion
+   Two layers. The hero paints as soon as it loads; everything
+   below the fold rises once, when it enters, driven by the
+   data-revealed attribute that useReveal() sets. Nothing depends
+   on the animation to be readable: without script there is no
+   markup, and under reduced motion the travel is dropped.
+   ------------------------------------------------------------ */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__greeting,
+  .hero__title,
+  .hero__headline,
+  .hero__stack,
+  .hero__location,
+  .hero__actions {
+    animation: hero-rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .hero__title {
+    animation-delay: 60ms;
+  }
+
+  .hero__headline {
+    animation-delay: 120ms;
+  }
+
+  .hero__stack {
+    animation-delay: 180ms;
+  }
+
+  .hero__location {
+    animation-delay: 240ms;
+  }
+
+  .hero__actions {
+    animation-delay: 300ms;
+  }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+
+[data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Layout helpers
+   ============================================================ */
+.container {
+  width: min(100% - 2.5rem, var(--w-shell));
+  margin-inline: auto;
+}
+
+/* Skip link: visually hidden until keyboard focus */
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transform: translateY(-300%);
+  transition: transform 0.18s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  color: var(--on-accent);
+}
+
+/* Mono + caps is reserved for data captions (a number's unit), not for
+   section labels — those are prose and use the sans. */
+.highlight__label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Header / navigation (sticky, translucent)
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+/* iOS WebKit re-samples a sticky blur layer on every scroll; drop it there. */
+@supports not (backdrop-filter: blur(1px)) {
+  .site-header {
+    background: var(--bg);
+  }
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: var(--nav-h);
+}
+
+.nav__brand {
+  order: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nav__brand:hover {
+  border-color: var(--accent-line);
+  color: var(--accent);
+  box-shadow: 0 0 18px -6px var(--accent-glow);
+}
+
+.nav__panel {
+  order: 1;
+  margin-inline-start: auto;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem 1.35rem;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  display: inline-block;
+  padding-block: 0.25rem;
+  border-bottom: 1px solid transparent;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.nav__link:hover {
+  border-bottom-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.nav__controls {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Language switch — segmented pill, hairline */
+.lang-switch {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+}
+
+.lang-switch__option {
+  min-width: 2.5rem;
+  padding: 0.34rem 0.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.lang-switch__option:hover {
+  color: var(--text);
+}
+
+.lang-switch__option[aria-pressed='true'] {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--secondary);
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-line);
+  color: var(--accent);
+  box-shadow: 0 0 18px -6px var(--accent-glow);
+}
+
+.theme-toggle svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* Hamburger (mobile only) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav__toggle-bar {
+  display: block;
+  width: 0.95rem;
+  height: 1.5px;
+  margin-inline: auto;
+  background: var(--text);
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.nav__toggle[aria-expanded='true'] .nav__toggle-bar:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+
+.nav__toggle[aria-expanded='true'] .nav__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle[aria-expanded='true'] .nav__toggle-bar:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+/* Below this width the six links no longer fit on one line, so the menu
+   collapses instead of wrapping mid-label. */
+@media (max-width: 55.99rem) {
+  .nav__toggle {
+    display: inline-flex;
+  }
+
+  .nav__controls {
+    margin-inline-start: auto;
+  }
+
+  .nav__panel {
+    position: absolute;
+    inset-inline: -1.25rem;
+    top: 100%;
+    display: none;
+    margin: 0;
+    padding: 0.35rem 1.25rem 1rem;
+    border-bottom: 1px solid var(--border-strong);
+    background: var(--bg);
+    box-shadow: var(--shadow-pop);
+  }
+
+  .nav__panel[data-open='true'] {
+    display: block;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav__link {
+    display: block;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8125rem;
+  }
+
+  .nav__list li:last-child .nav__link {
+    border-bottom: 0;
+  }
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  position: relative;
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2rem, 4vw, 3.5rem);
+}
+
+/* Technical grid, faded out with a mask instead of a blurred layer. */
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 42px 42px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 72%);
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 72%);
+  pointer-events: none;
+}
+
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* The greeting is the first half of a sentence the h1 completes, so it is set
+   as running text — not as a tracked-out all-caps eyebrow. */
+.hero__greeting {
+  margin-bottom: 0.35rem;
+  color: var(--secondary);
+  font-size: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.hero__title {
+  margin-bottom: 1.1rem;
+  font-size: clamp(2.6rem, 1rem + 6.5vw, 5.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+/* Shimmering surname: two passes, then it rests on the bright half. */
+.hero__surname {
+  background: linear-gradient(to right, var(--text), var(--secondary), var(--muted));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 3s ease-in-out 2 alternate both;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (forced-colors: active) {
+  .hero__surname {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: currentColor;
+  }
+}
+
+.hero__headline {
+  max-width: 54ch;
+  margin-bottom: 1.1rem;
+  color: var(--text-2);
+  font-size: clamp(1.125rem, 0.95rem + 0.8vw, 1.375rem);
+  font-weight: 300;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Stack manifest: the same tokens the CV lists, set as data. */
+.hero__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
+  max-width: 46rem;
+  margin-bottom: 1.6rem;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.hero__location {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  max-width: 44rem;
+  margin-bottom: 2.25rem;
+  color: var(--text-2);
+  font-size: 1rem;
+}
+
+.hero__availability {
+  color: var(--muted);
+}
+
+.hero__dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 14px 2px var(--accent-glow);
+  }
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* On a phone the CTAs stack full-width; a ragged wrap reads as a mistake. */
+@media (max-width: 29.99rem) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button--link {
+    justify-content: flex-start;
+    padding-inline: 0;
+  }
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.15s ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--primary {
+  background: var(--primary-bg);
+  color: var(--primary-fg);
+}
+
+.button--primary:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 0 30px -5px var(--accent-glow);
+}
+
+.button--ghost {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.button--ghost:hover {
+  border-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.button--link {
+  padding-inline: 0.35rem;
+  color: var(--secondary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 5px;
+}
+
+.button--link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent-line);
+}
+
+.button--small {
+  min-height: 38px;
+  padding: 0.45rem 1rem;
+  font-size: 0.8125rem;
+}
+
+.button__hint {
+  padding: 0.05rem 0.35rem;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+.section {
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+/* A whole field of tone separates a section from its neighbours without
+   drawing a line across the page. */
+.section--band {
+  background: var(--surface);
+}
+
+.section__title {
+  margin-bottom: 2.25rem;
+  font-size: clamp(1.7rem, 1.1rem + 2.2vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.section__intro {
+  max-width: 46rem;
+  margin-bottom: 2rem;
+  color: var(--secondary);
+}
+
+/* ============================================================
+   About + highlights
+   ============================================================ */
+.about {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.about__text {
+  display: grid;
+  gap: 1rem;
+  max-width: 40rem;
+}
+
+.about__paragraph {
+  color: var(--secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 1px solid var(--border);
+}
+
+/* In the desktop two-column layout the aside is narrow: 2×2 beats 4 cramped. */
+@media (min-width: 60rem) {
+  .about .highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.highlight__value {
+  color: var(--text);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.highlight__label {
+  color: var(--secondary);
+}
+
+/* ============================================================
+   Experience timeline
+   ============================================================ */
+.timeline {
+  display: grid;
+  gap: 2.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline__item {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding-inline-start: 1.6rem;
+  border-inline-start: 1px solid var(--border-strong);
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  top: 0.55rem;
+  left: -3.5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.timeline__role {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.timeline__org {
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.timeline__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 1.1rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.8125rem;
+}
+
+.timeline__period {
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.timeline__place {
+  color: var(--secondary);
+}
+
+.timeline__mode {
+  color: var(--muted);
+}
+
+.timeline__bullets {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 40rem;
+  padding-left: 1.05rem;
+  color: var(--secondary);
+  font-size: 1rem;
+}
+
+.timeline__bullets li::marker {
+  color: var(--accent-line);
+}
+
+/* From tablet up the entry reads as a record: the role on the left, what was
+   done on the right, so the timeline uses the page width instead of hugging
+   one edge. */
+@media (min-width: 60rem) {
+  .timeline__item {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+    gap: 0.75rem 3rem;
+    align-items: start;
+  }
+
+  .timeline__bullets {
+    max-width: none;
+  }
+}
+
+/* ============================================================
+   Projects
+   ============================================================ */
+.projects__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 48rem) {
+  .projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* The lead project is the deeper build, so it gets the full width. */
+  .card--featured {
+    grid-column: 1 / -1;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1.35rem, 2.4vw, 2rem);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Cursor-following spotlight; --mx/--my are set from ProjectCard. */
+.card__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 0%),
+    var(--accent-dim),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card > *:not(.card__glow) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-line);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card:hover .card__glow {
+    opacity: 1;
+  }
+}
+
+.card__header {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.card__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* The subtitle describes the project, so it is set as prose rather than as
+   a tracked-out label. */
+.card__subtitle {
+  color: var(--secondary);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.card--featured .card__title {
+  font-size: clamp(1.6rem, 1.2rem + 1vw, 2rem);
+}
+
+/* Body: bullets on top, tags and link pinned to the bottom edge so a row of
+   cards keeps its footer aligned. */
+.card__body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  flex: 1;
+  gap: 1rem;
+}
+
+.card__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .card--featured .card__body {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: stretch;
+    gap: 2rem 2.5rem;
+  }
+
+  /* In the wide slot the tags and link settle on the bottom edge, so the
+     card reads as a record rather than a stretched box. */
+  .card--featured .card__aside {
+    justify-content: flex-end;
+  }
+}
+
+.card__bullets {
+  display: grid;
+  gap: 0.45rem;
+  padding-left: 1.05rem;
+  color: var(--secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.card__bullets li::marker {
+  color: var(--accent-line);
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  color: var(--secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.card__footer {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+.card__link {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-underline-offset: 4px;
+  transition: color 0.25s ease;
+}
+
+.card__link:hover {
+  color: var(--text);
+  text-decoration-color: var(--border-strong);
+}
+
+.card__status {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Skills — a two-column spec table: group on the left, tokens on the right
+   ============================================================ */
+.skills {
+  display: grid;
+}
+
+.skills__row {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--border);
+}
+
+.skills__row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.skills__label {
+  color: var(--text-2);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.skills__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 48rem) {
+  .skills__row {
+    grid-template-columns: 13rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: 1.5rem;
+    padding-block: 1.25rem;
+  }
+}
+
+/* ============================================================
+   Education
+   ============================================================ */
+.education {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.education__list {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.education__item {
+  padding-block: 0.95rem;
+  border-top: 1px solid var(--border);
+}
+
+.education__item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.education__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.education__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 1rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.education__org {
+  color: var(--secondary);
+}
+
+.education__period {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.education__certs-label {
+  margin-bottom: 0.65rem;
+  color: var(--text-2);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.education__certs-list {
+  display: grid;
+  gap: 0.4rem;
+  padding-left: 1.05rem;
+  color: var(--secondary);
+  font-size: 1rem;
+}
+
+.education__certs-list li::marker {
+  color: var(--accent-line);
+}
+
+@media (min-width: 60rem) {
+  .about {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .education {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+/* ============================================================
+   Footer / contact
+   ============================================================ */
+.site-footer {
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+  margin-top: 2rem;
+  padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
+  border-top: 1px solid var(--border-strong);
+  background: var(--surface);
+}
+
+.site-footer .section__title {
+  margin-bottom: 1.5rem;
+}
+
+.site-footer__text {
+  max-width: 42rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+}
+
+/* The one action of the section, with the plain facts beside it. */
+.site-footer__lead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.site-footer__availability {
+  color: var(--muted);
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__link {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 5px;
+  transition:
+    color 0.25s ease,
+    text-decoration-color 0.25s ease;
+}
+
+.site-footer__link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent-line);
+}
+
+.site-footer__cv-label {
+  margin-bottom: 0.65rem;
+  color: var(--text-2);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.site-footer__cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Colophon: attribution on the left, provenance on the right — no dot-joined
+   meta string. */
+.site-footer__colophon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.35rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 60rem) {
+  .site-footer__grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+}
